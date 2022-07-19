@@ -27,6 +27,12 @@ const App = ()=> {
       setTasks(newTasks);
     };
 
+    const handleTaskDeletion = (taskId)=> {
+      const newTasks = tasks.filter(task => task.id != taskId);
+      setTasks(newTasks)
+      };
+    
+
     const handleTaskAddition = (taskTitle) => {
         const newTasks = [
             ...tasks,
@@ -46,7 +52,9 @@ return (
       <AddTask handleTaskAddition={handleTaskAddition} />
       <Tasks
       tasks={tasks}
-      handleTaskClick={handleTaskClick} />
+      handleTaskClick={handleTaskClick}
+      handleTaskDeletion={handleTaskDeletion}
+      />
     </div>
     
   </>
