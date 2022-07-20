@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import {v4 as uuidv4} from 'uuid';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 import Tasks from './components/Tasks';
 import './App.css';
@@ -49,20 +51,29 @@ const App = ()=> {
     };
     
 return (
-  <>
+  
     <div className='container'>
       <Header />
-      <AddTask handleTaskAddition={handleTaskAddition} />
-      <Tasks
-      tasks={tasks}
-      handleTaskClick={handleTaskClick}
-      handleTaskDeletion={handleTaskDeletion}
-      />
-    </div>
-    
-  </>
+      <Router>
+      <Routes>
+          <Route path='/teste' exact element={
+            <>
+                <AddTask handleTaskAddition={handleTaskAddition} />
+                  <Tasks
+                  tasks={tasks}
+                  handleTaskClick={handleTaskClick}
+                  handleTaskDeletion={handleTaskDeletion}
+                  />
+            </>
+          }
+        />
+      </Routes>
+      </Router>
+      </div>
+  
 );
 
 };
 
 export default App;
+
